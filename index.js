@@ -1,17 +1,17 @@
 'use strict'
 
-require('dotenv').config()
-const endpoint = process.env.WEBAPI_ENDPOINT
-const access_token = process.env.ACCESS_TOKEN
-
 const fs = require('fs')
 const { parse } = require('csv-parse')
 const csv = require('csvtojson')
 const axios = require('axios')
 const short = require('short-uuid')
 
+require('dotenv').config()
+const endpoint = process.env.WEBAPI_ENDPOINT
+const access_token = process.env.ACCESS_TOKEN
+
 csv().fromFile('data-1000.csv').then((jsonObj) => {
-    const uuid = short.generate();
+    //const uuid = short.generate();
 
     let payload = '--batch_100\nContent-Type: multipart/mixed;boundary=changeset_AA100\n\n'
     // INFO: Content-ID must be started from 1
